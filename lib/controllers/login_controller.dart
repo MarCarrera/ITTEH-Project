@@ -1,11 +1,11 @@
+// ignore_for_file: unused_local_variable, avoid_print, await_only_futures
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  
-  
 
   //variables para capturar informacion de usuario
   final emailController = TextEditingController();
