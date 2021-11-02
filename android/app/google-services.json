@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "868752023292",
+    "project_id": "itteh-network",
+    "storage_bucket": "itteh-network.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868752023292:android:3b6e293c7216272dde4179",
+        "android_client_info": {
+          "package_name": "com.example.home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868752023292-fbr2j8ts32e0fjm8tctcj82n93noheq9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.home",
+            "certificate_hash": "8a33e6502de496ce94c3c01b6a7db2ae04d79c49"
+          }
+        },
+        {
+          "client_id": "868752023292-vdsd65mb0v9682f8skrjf5dgk28e2b6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuYg2z96yijQWw1nmMLhWx2UKYcpo4-nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868752023292-vdsd65mb0v9682f8skrjf5dgk28e2b6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
