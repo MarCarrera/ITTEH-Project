@@ -14,6 +14,7 @@ class CalendarPage extends StatelessWidget {
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../constans.dart';
 import 'event.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -50,12 +51,19 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Calendario"),
-        centerTitle: true,
-      ),
       body: Column(
         children: [
+          Container(
+           margin: const EdgeInsets.only(top:46),
+            color: Colors.transparent,
+              child: const Text('Calendario Escolar',
+                style: TextStyle(
+                color: kDefaultColorBlue,
+                fontSize: 20,
+          
+           ),
+          ),
+          ),
           TableCalendar(
             focusedDay: selectedDay,
             firstDay: DateTime(1990),
@@ -84,26 +92,27 @@ class _CalendarPageState extends State<CalendarPage> {
             eventLoader: _getEventsfromDay,
 
             //To style the Calendar
-            calendarStyle: CalendarStyle(
+            calendarStyle: const CalendarStyle(
               isTodayHighlighted: true,
               selectedDecoration: BoxDecoration(
-                color: Colors.blue,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
+                color: kDefaultColorGrey,
+                //shape: BoxShape.rectangle,
+                shape: BoxShape.circle,
+                //borderRadius: BorderRadius.circular(5.0),
               ),
-              selectedTextStyle: const TextStyle(color: Colors.white),
+              selectedTextStyle: TextStyle(color: Colors.white),
               todayDecoration: BoxDecoration(
-                color: Colors.purpleAccent,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
+                color: kDefaultColorBlue,
+                shape: BoxShape.circle,
+                //borderRadius: BorderRadius.circular(5.0),
               ),
               defaultDecoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
+                shape: BoxShape.circle,
+                //borderRadius: BorderRadius.circular(5.0),
               ),
               weekendDecoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
+                shape: BoxShape.circle,
+                //borderRadius: BorderRadius.circular(5.0),
               ),
             ),
             headerStyle: HeaderStyle(
@@ -111,7 +120,7 @@ class _CalendarPageState extends State<CalendarPage> {
               titleCentered: true,
               formatButtonShowsNext: false,
               formatButtonDecoration: BoxDecoration(
-                color: Colors.blue,
+                color: kDefaultColorBlue,
                 borderRadius: BorderRadius.circular(5.0),
               ),
               formatButtonTextStyle: const TextStyle(
@@ -132,13 +141,13 @@ class _CalendarPageState extends State<CalendarPage> {
         onPressed: () => showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text("Add Event"),
+            title: const Text("Próximo evento"),
             content: TextFormField(
               controller: _eventController,
             ),
             actions: [
               TextButton(
-                child: const Text("Cancel"),
+                child: const Text("Cancelar"),
                 onPressed: () => Navigator.pop(context),
               ),
               TextButton(
@@ -165,8 +174,9 @@ class _CalendarPageState extends State<CalendarPage> {
             ],
           ),
         ),
-        label:const Text("Add Event"),
+        label:const Text("Evento"),
         icon: const Icon(Icons.add),
+        backgroundColor: kDefaultColorBlue,
       ),
     );
   }

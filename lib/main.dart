@@ -19,25 +19,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        /*textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: Colors.white),*/
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        //primaryColor: _primaryColor,
-        //accentColor: _accentColor,
-        //scaffoldBackgroundColor: Colors.grey.shade100,
-        //primarySwatch: Colors.grey,
       ),
       initialRoute: '/login',
       navigatorKey: Get.key,
       getPages: routes(),
-
-      
     );
     //home: const ItemClases(),
   }
