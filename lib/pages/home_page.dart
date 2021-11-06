@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use, unused_element, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:home/sobrantes/calendar_page.dart';
-import 'package:home/sobrantes/chat_page.dart';
-import 'package:home/sobrantes/profile_page.dart';
 import '../constans.dart';
 import 'body.dart';
+import 'nav_bar_pages/calendar_page.dart';
+import 'nav_bar_pages/chat_page.dart';
+import 'nav_bar_pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

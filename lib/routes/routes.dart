@@ -7,12 +7,12 @@ import 'package:home/pages/form_class_page.dart';
 import 'package:home/pages/gallery.dart';
 import 'package:home/pages/home_page.dart';
 import 'package:home/pages/login_page.dart';
+import 'package:home/pages/nav_bar_pages/calendar_page.dart';
+import 'package:home/pages/nav_bar_pages/chat_page.dart';
+import 'package:home/pages/nav_bar_pages/profile_page.dart';
 import 'package:home/pages/personal_screen.dart';
 import 'package:home/pages/registration_page.dart';
 import 'package:home/pages/screen_notices.dart';
-import 'package:home/sobrantes/calendar_page.dart';
-import 'package:home/sobrantes/chat_page.dart';
-import 'package:home/sobrantes/profile_page.dart';
 
 routes() => [
   GetPage(name: "/login", page: () => LoginPage(), transition: Transition.zoom),
