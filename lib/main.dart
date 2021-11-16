@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/login',
+      initialRoute: '/home',
       navigatorKey: Get.key,
       getPages: routes(),
     );

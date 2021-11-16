@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     const Body(),
     const CalendarPage(),
     const ChatPage(),
-    const ProfilePage(),
+    const ProfilePage(phone:'',place:'',description:'',date: '',),
     /*"/body"
     "/calendar"
     "/chat"

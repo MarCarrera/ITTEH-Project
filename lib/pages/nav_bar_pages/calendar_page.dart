@@ -1,17 +1,5 @@
 // ignore_for_file: avoid_print
 
-/*import 'package:flutter/material.dart';
-
-class CalendarPage extends StatelessWidget {
-  const CalendarPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text('Calendario'),
-      ));
-}*/
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../constans.dart';

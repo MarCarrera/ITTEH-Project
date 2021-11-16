@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+//import 'package:flutter_api_rest/utils/responsive.dart';
 import '../constans.dart';
 
 class ItemCardCategorie extends StatelessWidget {
@@ -12,6 +13,7 @@ class ItemCardCategorie extends StatelessWidget {
   final String text;
   final double alto;
   final double ancho;
+  //final double size;
 
   const ItemCardCategorie({
     Key? key,
@@ -21,10 +23,13 @@ class ItemCardCategorie extends StatelessWidget {
     required this.text,
     required this.alto,
     required this.ancho,
+    // required this.size,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //final Responsive responsive = Responsive.of(context);
+
     return GestureDetector(
       onTap: () => Get.toNamed(page),
       child: Container(
@@ -49,8 +54,8 @@ class ItemCardCategorie extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.only(right: 15.0, top: 5.0),
+                padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.only(right: 12.0),
                 child: Image(
                   image: AssetImage(image),
                   height: 65,
@@ -58,7 +63,7 @@ class ItemCardCategorie extends StatelessWidget {
                 ),
               ),
             ),
-            //todo ------------ Informacion ---------------------//
+            //todo ------------ Titulo ---------------------//
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
@@ -66,7 +71,7 @@ class ItemCardCategorie extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 15.0, top: 15.0),
                 child: Text(
                   text,
-                  style: const TextStyle(color: Colors.white, fontSize: 20.0),
+                  style: const TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ),

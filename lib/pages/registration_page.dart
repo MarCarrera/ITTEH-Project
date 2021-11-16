@@ -76,6 +76,7 @@ class RegistrationPage extends StatelessWidget {
       child: Stack(
         children: [
           Container(
+            margin: const EdgeInsets.only( top: 16, right: 16,),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),

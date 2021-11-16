@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, prefer_const_declarations
+// ignore_for_file: deprecated_member_use, prefer_const_declarations, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +9,7 @@ import 'home_page.dart';
 class FormClassPage extends StatefulWidget {
   const FormClassPage({Key? key}) : super(key: key);
 
-  static final namePage = "Formulario";
+  //static final namePage = "Formulario";
 
   @override
   _FormClassPageState createState() => _FormClassPageState();
@@ -23,11 +23,13 @@ class _FormClassPageState extends State<FormClassPage> {
 
   @override
   Widget build(BuildContext context) {
+    //final controller = FormController();
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          title: const Text("Personal"),
+          title: const Text("Agregar Clase"),
           centerTitle: true,
           // en este titleTextStyle damos color y tamano a la fuente
           titleTextStyle: const TextStyle(
@@ -63,7 +65,8 @@ class _FormClassPageState extends State<FormClassPage> {
               ),
               _crearAula(),
               const SizedBox(height: 30),
-              _botonAgregar(context),
+              _botonAgregar()
+//-----------------------------------------BOTON AGREGAR---------------------------------//
             ])),
           ),
         ));
@@ -72,10 +75,7 @@ class _FormClassPageState extends State<FormClassPage> {
   _crearNombreClase() {
     //evento que recibe un valor y se dispara cuando ocurre el evento (A)
     return TextFormField(
-        onSaved: (valor) {
-          //cuando salve, en la nueva clase en la casilla clase guardara lo que se digito
-          //newClass['clase']=valor;
-        },
+        //controller: controller.materiaController,
         decoration: ThemeHelper().textInputDecoration(
             'Nombre de la clase', 'Ingresa nombre de la clase'));
   }
@@ -109,7 +109,7 @@ class _FormClassPageState extends State<FormClassPage> {
         decoration: ThemeHelper().textInputDecoration('Aula', 'Aula'));
   }
 
-  _botonAgregar(BuildContext context) {
+  _botonAgregar() {
     return Container(
       height: 40,
       width: 140,
@@ -130,6 +130,12 @@ class _FormClassPageState extends State<FormClassPage> {
             ),
           ),
           onPressed: () {
+            /*Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ItemCardClass(
+                          materia: c.text,
+                        )));*/
             Get.toNamed('/home');
           }),
     );
