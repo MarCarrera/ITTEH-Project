@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:home/components.dart/item_card_personal.dart';
 import '../constans.dart';
-import 'home_page.dart';
 
 class PersonalScreen extends StatelessWidget {
   const PersonalScreen({Key? key}) : super(key: key);
@@ -29,8 +29,7 @@ class PersonalScreen extends StatelessWidget {
           color: cPrimaryColor,
           onPressed: () {
             // esto se utilizara para navegar a la pagina principal
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const HomePage()));
+            Get.toNamed('/home');
           }, 
         ),
       ),

@@ -3,12 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/common/theme_helper.dart';
-import 'package:home/controllers/registration_controller.dart';
+import 'package:home/controllers/new_account_controller.dart';
+//import 'package:home/controllers/register_controller.dart';
+//import 'package:home/controllers/registration_controller.dart';
 import 'package:home/controllers/validations.dart';
 import '../constans.dart';
 
 class RegistrationPage extends StatelessWidget {
-  final controller = Get.put(RegistrationController());
+  final controller = Get.put(NewAccountController());
+  //final controller = Get.put(RegistrationController());
   final _formKey = GlobalKey<FormState>();
 
   RegistrationPage({Key? key}) : super(key: key);
@@ -17,56 +20,70 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: GetBuilder<RegistrationController>(
-            init: RegistrationController(),
+        body: GetBuilder<NewAccountController>(
+            init: NewAccountController(),
             builder: (_) {
               return SingleChildScrollView(
-                child: Form(
-                    key: _formKey,
-                    child: Column(children: [
-                      const SizedBox(height: 60.0),
-                      _iconPerson(),
-                      const SizedBox(height: 20.0),
-                      _inputName(),
-                      const SizedBox(height: 20.0),
-                      _inputLastName(),
-                      const SizedBox(height: 20.0),
-                      _inputEmail(),
-                      const SizedBox(height: 20.0),
-                      _inputPassword(),
-                      const SizedBox(height: 15.0),
-                      //_accepTerms(),
-//-------------------------------------------BOTON REGISTRO-------------------------------------//
-                      Container(
-                        height: 40,
-                        width: 260,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: kDefaultColorBlue,
+                child: AbsorbPointer(
+                  absorbing: controller.isLoading.value,
+                  child: Form(
+                      key: _formKey,
+                      child: Column(children: [
+                        const SizedBox(height: 60.0),
+                        _iconPerson(),
+                        const SizedBox(height: 20.0),
+                        _inputName(),
+                        const SizedBox(height: 20.0),
+                        _inputLastName(),
+                        const SizedBox(height: 20.0),
+                        _inputEmail(),
+                        const SizedBox(height: 20.0),
+                        _inputPassword(),
+                        const SizedBox(height: 15.0),
+                        //funcion de GetX
+                        Obx(
+                          () => Visibility(
+                              visible: controller.isLoading.value,
+                              child: const Center(
+                                  child: CircularProgressIndicator(
+                                color: kDefaultColorBlue,
+                                strokeWidth: 3.5,
+                              ))),
                         ),
-                        child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              child: Text(
-                                'Registrarme'.toUpperCase(),
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
+                        const SizedBox(height: 10.0),
+                        //-------------------------------------------BOTON REGISTRO-------------------------------------//
+                        Container(
+                          height: 40,
+                          width: 260,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: kDefaultColorBlue,
+                          ),
+                          child: ElevatedButton(
+                              style: ThemeHelper().buttonStyle(),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                child: Text(
+                                  'Registrarme'.toUpperCase(),
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.white),
+                                ),
                               ),
-                            ),
-                            onPressed: () async {
-                              //validar email y password con firebase
-                              if (_formKey.currentState!.validate()) {
-                                //Entramos con correo electronico
-                                _.register();
-                              }
-                            }),
-                      ),
-                      _signIn(context)
-                    ])),
+                              onPressed: () async {
+                                //validar email y password con firebase
+                                if (_formKey.currentState!.validate()) {
+                                  //Reisgro de nueva cuenta con correo electronico
+                                  //_.register();
+                                  _.createUserWithEmailAndPassword();
+                                }
+                              }),
+                        ),
+                        _signIn(context),
+                      ])),
+                ),
               );
             }));
   }
@@ -76,7 +93,10 @@ class RegistrationPage extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            margin: const EdgeInsets.only( top: 16, right: 16,),
+            margin: const EdgeInsets.only(
+              top: 16,
+              right: 16,
+            ),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
@@ -113,7 +133,7 @@ class RegistrationPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(right: 30, left: 30),
       child: TextFormField(
-        controller: controller.nameController,
+        //controller: controller,
         decoration: ThemeHelper().textInputDecoration(
           'Nombre',
           'Ingresa tu nombre',
@@ -131,7 +151,7 @@ class RegistrationPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(right: 30, left: 30),
       child: TextFormField(
-        controller: controller.lastnameController,
+        //controller: controller,
         decoration: ThemeHelper()
             .textInputDecoration('Apellidos', 'Ingresa tus apellidos'),
         //onChanged: controller.onLastNameChanged,
@@ -193,9 +213,6 @@ class RegistrationPage extends StatelessWidget {
           recognizer: TapGestureRecognizer()
             ..onTap = () {
               Get.toNamed('/login');
-              /*Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => LoginPage()),
-                  (Route<dynamic> route) => false);*/
             },
           style: const TextStyle(
               fontWeight: FontWeight.bold, color: kDefaultColorBlue),

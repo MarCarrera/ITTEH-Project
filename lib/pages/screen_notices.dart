@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:home/components.dart/item_card_notices.dart';
-import 'package:home/pages/home_page.dart';
 import '../constans.dart';
 
 class ScreenNotices extends StatelessWidget {
@@ -24,8 +24,7 @@ class ScreenNotices extends StatelessWidget {
         // esta linea agrega el boton con icono para regresar y se agrega color
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
+            Get.toNamed('/home');
           },
           icon: const Icon(Icons.arrow_back_ios_new),
           color: cPrimaryColorNot,

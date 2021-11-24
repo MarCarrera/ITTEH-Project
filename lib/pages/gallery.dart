@@ -3,9 +3,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 import '../constans.dart';
-import 'home_page.dart';
-
 
 class Gallery extends StatefulWidget {
   const Gallery({Key? key}) : super(key: key);
@@ -58,14 +57,14 @@ class _GalleryState extends State<Gallery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.white,
-        appBar: AppBar(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         elevation: 0,
         title: const Text('Galería ITTEH'),
         backgroundColor: Colors.white,
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color:  kDefaultColorRed,
+          color: kDefaultColorRed,
           fontSize: 20.0,
         ),
         leading: IconButton(
@@ -73,9 +72,8 @@ class _GalleryState extends State<Gallery> {
           color: kDefaultColorRed,
           onPressed: () {
             // esto se utilizara para navegar a la pagina principal
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const HomePage()));
-          }, 
+            Get.toNamed('/home');
+          },
         ),
       ),
       body: Container(

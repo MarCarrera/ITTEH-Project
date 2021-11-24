@@ -5,7 +5,7 @@ import '../constans.dart';
 import 'body.dart';
 import 'nav_bar_pages/calendar_page.dart';
 import 'nav_bar_pages/chat_page.dart';
-import 'nav_bar_pages/profile_page.dart';
+import 'nav_bar_pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     const Body(),
     const CalendarPage(),
     const ChatPage(),
-    const ProfilePage(phone:'',place:'',description:'',date: '',),
+    const SettingsPage(),
     /*"/body"
     "/calendar"
     "/chat"
@@ -66,8 +66,8 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: kDefaultColorBlue,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Perfil'),
+                icon: Icon(Icons.settings),
+                title: Text('Configuraciones'),
                 backgroundColor: kDefaultColorBlue,
               ),
             ]));

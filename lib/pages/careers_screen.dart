@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_declarations
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../constans.dart';
-import 'home_page.dart';
 
 class CareersScreen extends StatelessWidget {
   const CareersScreen({Key? key}) : super(key: key);
@@ -25,8 +24,7 @@ class CareersScreen extends StatelessWidget {
           color: kDefaultColorLightBlue,
           onPressed: () {
             // esto se utilizara para navegar a la pagina principal
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
+            Get.toNamed('/home');
           },
         ),
       ),

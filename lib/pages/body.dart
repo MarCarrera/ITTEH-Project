@@ -21,29 +21,29 @@ class _BodyState extends State<Body> {
     return Scaffold(
       appBar: builAppBar(),
       body: DetailsCategorie(context),
-      );
-
+    );
   }
-  AppBar builAppBar(){
+
+  AppBar builAppBar() {
     return AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: const Text("Bienvenido",
-        textAlign: TextAlign.left),        
+        title: const Text("Bienvenido", textAlign: TextAlign.left),
         titleTextStyle: const TextStyle(
-            color: kDefaultColorBlue,
-            fontSize: 26.0,
-          ),
+          color: kDefaultColorBlue,
+          fontSize: 26.0,
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset(
-              'assets/images/icon_setting.png',
-              width: 20,
+              'assets/images/icon_user.png',
+              width: 25,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed('/profile');
+            },
           ),
-        ]
-      );
+        ]);
   }
 
   ListView DetailsCategorie(BuildContext context) {

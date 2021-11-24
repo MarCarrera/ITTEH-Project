@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../constans.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -45,14 +46,24 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(backgroundColor: Colors.white, elevation: 0, actions: <Widget>[
-        IconButton(
-          //icon: Image.asset('assets/images/icon_setting.png',
-          icon: const Icon(Icons.notifications, color: kDefaultColorBlue),
-          onPressed: () {},
-        ),
-      ]),
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          // esta linea agrega el boton con icono para regresar y se agrega color
+          leading: IconButton(
+            onPressed: () {
+              Get.toNamed('/home');
+            },
+            icon: const Icon(Icons.arrow_back_ios_new),
+            color: kDefaultColorBlue,
+          ),
+          actions: <Widget>[
+            IconButton(
+              //icon: Image.asset('assets/images/icon_setting.png',
+              icon: const Icon(Icons.notifications, color: kDefaultColorBlue),
+              onPressed: () {},
+            ),
+          ]),
       //SystemNavigator.pop(); //salir
       body: SingleChildScrollView(
         child: Stack(
@@ -397,7 +408,8 @@ class _ProfilePageState extends State<ProfilePage> {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text("Inválido"),
-          content: const Text("Registre un número de teléfono inválido."),
+          content: const Text(
+              "Registre un número de teléfono válido y sin espacios."),
           actions: <Widget>[
             FlatButton(
               child: const Text("Ok"),

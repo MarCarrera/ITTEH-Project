@@ -10,21 +10,51 @@ import 'package:home/pages/login_page.dart';
 import 'package:home/pages/nav_bar_pages/calendar_page.dart';
 import 'package:home/pages/nav_bar_pages/chat_page.dart';
 import 'package:home/pages/nav_bar_pages/profile_page.dart';
+import 'package:home/pages/nav_bar_pages/settings_page.dart';
 import 'package:home/pages/personal_screen.dart';
 import 'package:home/pages/registration_page.dart';
 import 'package:home/pages/screen_notices.dart';
 
 routes() => [
-  GetPage(name: "/login", page: () => LoginPage(), transition: Transition.zoom),
-  GetPage(name: "/home", page: () => HomePage(), transition: Transition.zoom),
-  GetPage(name: "/body", page: () => Body(), transition: Transition.zoom),
-  GetPage(name: "/calendar", page: () => CalendarPage(), transition: Transition.zoom),
-  GetPage(name: "/chat", page: () => ChatPage(), transition: Transition.zoom),
-  GetPage(name: "/profile", page: () => ProfilePage(phone:'',place:'',description:'',date:''), transition: Transition.zoom),
-  GetPage(name: "/notices", page: () => ScreenNotices(), transition: Transition.zoom),
-  GetPage(name: "/personal", page: () => PersonalScreen(), transition: Transition.zoom),
-  GetPage(name: "/careers", page: () => CareersScreen(), transition: Transition.zoom),
-  GetPage(name: "/gallery", page: () => Gallery(), transition: Transition.zoom),
-  GetPage(name: "/form", page: () => FormClassPage(), transition: Transition.zoom),
-  GetPage(name: "/registration", page: () => RegistrationPage(), transition: Transition.zoom),
-  ];
+      GetPage(
+          name: "/login", page: () => LoginPage(), transition: Transition.zoom),
+      GetPage(
+          name: "/settings", page: () => SettingsPage(), transition: Transition.zoom),
+      GetPage(
+          name: "/home", page: () => HomePage(), transition: Transition.zoom),
+      GetPage(name: "/body", page: () => Body(), transition: Transition.zoom),
+      GetPage(
+          name: "/calendar",
+          page: () => CalendarPage(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/chat", page: () => ChatPage(), transition: Transition.zoom),
+      GetPage(
+          name: "/profile",
+          page: () =>
+              ProfilePage(phone: '', place: '', description: '', date: ''),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/notices",
+          page: () => ScreenNotices(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/personal",
+          page: () => PersonalScreen(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/careers",
+          page: () => CareersScreen(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/gallery", page: () => Gallery(), transition: Transition.zoom),
+      //GetPage(name: "/gallery", page: () => GalleryPage(), transition: Transition.zoom),
+      GetPage(
+          name: "/form",
+          page: () => FormClassPage(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/registration",
+          page: () => RegistrationPage(),
+          transition: Transition.zoom),
+    ];

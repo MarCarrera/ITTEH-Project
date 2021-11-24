@@ -1,14 +1,18 @@
-// ignore_for_file: deprecated_member_use, non_constant_identifier_names
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/common/theme_helper.dart';
-import 'package:home/controllers/login_controller.dart';
+//import 'package:home/controllers/auth_controller.dart';
+import 'package:home/controllers/sign_in_controller.dart';
+//import 'package:home/controllers/login_controller.dart';
+//import 'package:home/controllers/register_controller.dart';
 import 'package:home/controllers/validations.dart';
 import '../constans.dart';
+//import '../controllers/auth_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  final controller = Get.put(LoginController());
+  final controller = Get.put(SignInController());
+  //final controller = Get.put(LoginController());
   // valida que sean verdaderos los datos del usuario
   final _formKey = GlobalKey<FormState>();
 
@@ -18,8 +22,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: GetBuilder<LoginController>(
-            init: LoginController(),
+        body: GetBuilder<SignInController>(
+            init: SignInController(),
             builder: (_) {
               return SingleChildScrollView(
                 child: Form(
@@ -33,6 +37,17 @@ class LoginPage extends StatelessWidget {
                       _inputPassword(),
                       const SizedBox(height: 15.0),
                       _forgotPassword(),
+                      //funcion de GetX
+                      Obx(
+                        () => Visibility(
+                            visible: controller.isLoading.value,
+                            child: const Center(
+                                child: CircularProgressIndicator(
+                              color: kDefaultColorBlue,
+                              strokeWidth: 3.5,
+                            ))),
+                      ),
+                      const SizedBox(height: 10.0),
                       _bottonSignIn(context, _),
                       const SizedBox(height: 20.0),
                       _newAccount(),
@@ -123,7 +138,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  _bottonSignIn(BuildContext context, LoginController _) {
+  _bottonSignIn(BuildContext context, SignInController _) {
     return Container(
       height: 40,
       width: 260,
@@ -147,7 +162,11 @@ class LoginPage extends StatelessWidget {
             //validar email y password con firebase
             if (_formKey.currentState!.validate()) {
               //Entramos con correo electronico
+              /*const Center(
+                child: CircularProgressIndicator(),
+              );*/
               _.signInWithEmailAndPassword();
+              //_.signInWithEmailAndPassword();
               //Get.toNamed('/home');
 
               /*Navigator.push(
