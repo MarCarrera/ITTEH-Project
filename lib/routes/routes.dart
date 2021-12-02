@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
+import 'package:home/Pages/nav_bar_pages/edit_priofile.dart';
+//import 'package:home/Pages/nav_bar_pages/data_user.dart';
 import 'package:home/pages/body.dart';
 import 'package:home/pages/careers_screen.dart';
 import 'package:home/pages/form_class_page.dart';
@@ -31,8 +33,7 @@ routes() => [
           name: "/chat", page: () => ChatPage(), transition: Transition.zoom),
       GetPage(
           name: "/profile",
-          page: () =>
-              ProfilePage(phone: '', place: '', description: '', date: ''),
+          page: () => ProfilePage(),
           transition: Transition.zoom),
       GetPage(
           name: "/notices",
@@ -48,7 +49,6 @@ routes() => [
           transition: Transition.zoom),
       GetPage(
           name: "/gallery", page: () => Gallery(), transition: Transition.zoom),
-      //GetPage(name: "/gallery", page: () => GalleryPage(), transition: Transition.zoom),
       GetPage(
           name: "/form",
           page: () => FormClassPage(),
@@ -57,4 +57,6 @@ routes() => [
           name: "/registration",
           page: () => RegistrationPage(),
           transition: Transition.zoom),
+      GetPage(name: "/editProfile", page: () => EditProfile(), transition: Transition.zoom),
+          
     ];

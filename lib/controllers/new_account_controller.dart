@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/repository/auth_repository.dart';
+
+import '../constans.dart';
 
 class NewAccountController extends GetxController {
   final _authRepository = Get.find<AuthRepository>();
@@ -34,9 +37,12 @@ class NewAccountController extends GetxController {
           emailController.text, passwordController.text);
     } catch (e) {
       error.value = e.toString();
-      print(error.value);
-      Get.snackbar('Fallo', 'Éste email ya es usado por otro usuario',
-          snackPosition: SnackPosition.BOTTOM);
+      Get.defaultDialog(
+          backgroundColor: kDefaultColorBlue,
+          title: 'Fallo',
+          titleStyle: const TextStyle(color: Colors.white),
+          content: const Text('Éste email ya pertenece a otro usuario.',
+              style: TextStyle(color: Colors.white)));
     }
     isLoading.value = false;
   }
