@@ -1,7 +1,7 @@
 import 'package:home/models/my_user.dart';
 import 'package:home/providers/firebase_provider.dart';
 import 'dart:io';
-import 'package:home/repository/my_user_repository.dart';
+import '../my_user_repository.dart';
 
 class MyUserRepositoryImp extends MyUserRepository {
   //instancia de FirebaseProvider

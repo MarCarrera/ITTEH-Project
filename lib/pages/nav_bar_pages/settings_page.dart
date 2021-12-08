@@ -157,9 +157,12 @@ class SettingsPage extends StatelessWidget {
                           top: 21.0,
                           left: 22.5), //aqui van las pripiedades del texto
                       child: TextButton(
-                        onPressed: () {
-                          _.signOut();
-                        },
+                        onPressed: () //{
+                            =>
+                            Get.find<AuthController>().signOut(),
+                        //_.signOut();
+
+                        //},
                         child: const Text("Sign Out",
                             style: TextStyle(
                                 color: kDefaultColorBlue,

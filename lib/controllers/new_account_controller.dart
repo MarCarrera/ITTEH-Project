@@ -10,8 +10,6 @@ import '../constans.dart';
 class NewAccountController extends GetxController {
   final _authRepository = Get.find<AuthRepository>();
 
-  final nameController = TextEditingController();
-  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -32,6 +30,7 @@ class NewAccountController extends GetxController {
     try {
       isLoading.value = true;
       error.value = null;
+
       //llamada a API que recibe los datos del usuario
       await _authRepository.createUserWithEmailAndPassword(
           emailController.text, passwordController.text);

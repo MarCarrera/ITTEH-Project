@@ -21,7 +21,9 @@ routes() => [
       GetPage(
           name: "/login", page: () => LoginPage(), transition: Transition.zoom),
       GetPage(
-          name: "/settings", page: () => SettingsPage(), transition: Transition.zoom),
+          name: "/settings",
+          page: () => SettingsPage(),
+          transition: Transition.zoom),
       GetPage(
           name: "/home", page: () => HomePage(), transition: Transition.zoom),
       GetPage(name: "/body", page: () => Body(), transition: Transition.zoom),
@@ -57,6 +59,8 @@ routes() => [
           name: "/registration",
           page: () => RegistrationPage(),
           transition: Transition.zoom),
-      GetPage(name: "/editProfile", page: () => EditProfile(), transition: Transition.zoom),
-          
+      GetPage(
+          name: "/editProfile",
+          page: () => EditProfile(),
+          transition: Transition.zoom),
     ];

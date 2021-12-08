@@ -2,16 +2,15 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:home/controllers/new_account_controller.dart';
 import 'package:home/models/my_user.dart';
-import 'package:home/repository/implementations/my_user_repository_imp.dart';
-//import 'package:home/repository/my_user_repository.dart';
+import 'package:home/repository/my_user_repository.dart';
 import '../constans.dart';
 import 'auth_controller.dart';
 
 class MyUserController extends GetxController {
   //instancia de la clase MyUserRepository
-  //final _userRepository = Get.find<MyUserRepository>();
-  final _userRepository = Get.put(MyUserRepositoryImp());
+  final _userRepository = Get.find<MyUserRepository>();
 
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -20,8 +19,8 @@ class MyUserController extends GetxController {
   final careerController = TextEditingController();
   final ageController = TextEditingController();
   final aboutMeController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  //final emailController = TextEditingController();
+  //final passwordController = TextEditingController();
 
   Rx<File?> pickedImage = Rx(null);
   Rx<bool> isLoading = Rx(false);
@@ -48,8 +47,8 @@ class MyUserController extends GetxController {
     careerController.text = user.value?.career ?? '';
     ageController.text = user.value?.age.toString() ?? '';
     aboutMeController.text = user.value?.aboutMe ?? '';
-    emailController.text = user.value?.email ?? '';
-    passwordController.text = user.value?.password ?? '';
+    //emailController.text = user.value?.email ?? '';
+    //passwordController.text = user.value?.password ?? '';
     isLoading.value = false;
   }
 
@@ -63,11 +62,13 @@ class MyUserController extends GetxController {
     final semester = int.tryParse(semesterController.text) ?? 0;
     final age = int.tryParse(ageController.text) ?? 0;
     final aboutMe = aboutMeController.text;
-    final email = emailController.text;
-    final password = passwordController.text;
+    //final email = emailController.text;
+    //final password = passwordController.text;
+
     final newUser = MyUser(uid, name, lastName, nControl, career, semester, age,
-        aboutMe, email, password,
+        aboutMe, //email, password,
         image: user.value?.image);
+
     user.value = newUser;
 
     //Guardar usuario en la Base de Datos

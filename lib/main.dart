@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/controllers/auth_controller.dart';
 import 'package:home/repository/implementations/auth_repository.dart';
-import 'package:home/repository/implementations/my_user_repository_imp.dart';
+//import 'package:home/repository/implementations/my_user_repository_imp.dart';
 import 'repository/auth_repository.dart';
+import 'repository/implementations/my_user_repository.dart';
 import 'repository/my_user_repository.dart';
 import 'routes/routes.dart';
 

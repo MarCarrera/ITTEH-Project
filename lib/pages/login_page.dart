@@ -22,38 +22,34 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: GetBuilder<SignInController>(
-            init: SignInController(),
-            builder: (_) {
-              return SingleChildScrollView(
-                child: Form(
-                    key: _formKey,
-                    child: Column(children: [
-                      _iconLogin(),
-                      _textLogin(),
-                      const SizedBox(height: 30.0),
-                      _inputEmail(),
-                      const SizedBox(height: 30.0),
-                      _inputPassword(),
-                      const SizedBox(height: 15.0),
-                      _forgotPassword(),
-                      //funcion de GetX
-                      Obx(
-                        () => Visibility(
-                            visible: controller.isLoading.value,
-                            child: const Center(
-                                child: CircularProgressIndicator(
-                              color: kDefaultColorBlue,
-                              strokeWidth: 3.5,
-                            ))),
-                      ),
-                      const SizedBox(height: 10.0),
-                      _bottonSignIn(context, _),
-                      const SizedBox(height: 20.0),
-                      _newAccount(),
-                    ])),
-              );
-            }));
+        body: SingleChildScrollView(
+          child: Form(
+              key: _formKey,
+              child: Column(children: [
+                _iconLogin(),
+                _textLogin(),
+                const SizedBox(height: 30.0),
+                _inputEmail(),
+                const SizedBox(height: 30.0),
+                _inputPassword(),
+                const SizedBox(height: 15.0),
+                _forgotPassword(),
+                //funcion de GetX
+                Obx(
+                  () => Visibility(
+                      visible: controller.isLoading.value,
+                      child: const Center(
+                          child: CircularProgressIndicator(
+                        color: kDefaultColorBlue,
+                        strokeWidth: 3.5,
+                      ))),
+                ),
+                const SizedBox(height: 10.0),
+                _bottonSignIn(context),
+                const SizedBox(height: 20.0),
+                _newAccount(),
+              ])),
+        ));
   }
 
   _iconLogin() {
@@ -138,7 +134,9 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  _bottonSignIn(BuildContext context, SignInController _) {
+  _bottonSignIn(
+    BuildContext context,
+  ) {
     return Container(
       height: 40,
       width: 260,
@@ -165,7 +163,7 @@ class LoginPage extends StatelessWidget {
               /*const Center(
                 child: CircularProgressIndicator(),
               );*/
-              _.signInWithEmailAndPassword();
+              controller.signInWithEmailAndPassword();
               //_.signInWithEmailAndPassword();
               //Get.toNamed('/home');
 

@@ -26,45 +26,14 @@ class EditProfile extends StatelessWidget {
           strokeWidth: 3.7,
         ));
       }
-      return const MyUserSection(
-        name: '',
-        nControl: '',
-        dateAdm: '',
-        semester: '',
-        career: '',
-        email: '',
-        phone: '',
-        date: '',
-        place: '',
-        description: '',
-      );
+      return const MyUserSection();
     }));
   }
 }
 
 class MyUserSection extends StatefulWidget {
-  final String name;
-  final String nControl;
-  final String dateAdm;
-  final String semester;
-  final String career;
-  final String email;
-  final String phone;
-  final String date;
-  final String place;
-  final String description;
   const MyUserSection({
     Key? key,
-    required this.name,
-    required this.nControl,
-    required this.dateAdm,
-    required this.semester,
-    required this.career,
-    required this.email,
-    required this.phone,
-    required this.date,
-    required this.place,
-    required this.description,
   }) : super(key: key);
 
   @override
@@ -73,26 +42,6 @@ class MyUserSection extends StatefulWidget {
 
 class MyUserSectionState extends State<MyUserSection> {
   final picker = ImagePicker();
-
-  //inicializar DatePicker
-  var _currentSelectedDate = DateTime.now();
-  //llamar al DatePicker
-  void callDatePicker() async {
-    var selectedDate = await getDatePickerWidget();
-    setState(() {
-      _currentSelectedDate = selectedDate!;
-    });
-  }
-
-  //crear Widget DataPicker, logica principal donde se inicializa
-  Future<DateTime?> getDatePickerWidget() {
-    return showDatePicker(
-      context: context,
-      initialDate: _currentSelectedDate,
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2030),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +141,7 @@ class MyUserSectionState extends State<MyUserSection> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 15),
                     Column(
                       children: <Widget>[
                         Container(
@@ -205,7 +155,14 @@ class MyUserSectionState extends State<MyUserSection> {
                                   TextField(
                                     controller: userController.nameController,
                                     decoration: const InputDecoration(
-                                        labelText: 'Name'),
+                                        labelText: 'Nombre(s)'),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  TextField(
+                                    controller:
+                                        userController.lastNameController,
+                                    decoration: const InputDecoration(
+                                        labelText: 'Apellidos'),
                                   ),
                                   const SizedBox(height: 10),
                                   TextField(
@@ -281,26 +238,4 @@ class MyUserSectionState extends State<MyUserSection> {
           ),
         ));
   }
-
-  _lineGrey() {
-    return Container(
-      height: 0.8,
-      width: 135.0,
-      color: Colors.grey,
-      //margin: const EdgeInsets.only(left: 15.0, top: 22.0),
-    );
-  }
-}
-
-_backPage() {
-  return Get.toNamed('/profile');
-}
-
-_lineGrey() {
-  return Container(
-    height: 0.8,
-    width: 284.0,
-    color: Colors.grey,
-    //margin: const EdgeInsets.only(left: 15.0, top: 22.0),
-  );
 }
