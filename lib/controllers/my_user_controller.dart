@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:home/controllers/new_account_controller.dart';
 import 'package:home/models/my_user.dart';
 import 'package:home/repository/my_user_repository.dart';
 import '../constans.dart';

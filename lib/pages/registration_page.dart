@@ -27,11 +27,10 @@ class RegistrationPage extends StatelessWidget {
         child: Form(
             key: _formKey,
             child: Column(children: [
-              const SizedBox(height: 60.0),
               _iconWelcome(),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 30.0),
               _inputEmail(),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 30.0),
               _inputPassword(),
               const SizedBox(height: 15.0),
               //funcion de GetX
@@ -75,6 +74,7 @@ class RegistrationPage extends StatelessWidget {
                       }
                     }),
               ),
+              const SizedBox(height: 10.0),
               _signIn(context),
             ])),
       ),
@@ -85,41 +85,13 @@ class RegistrationPage extends StatelessWidget {
   }
 
   _iconWelcome() {
-    return Stack(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(
-            top: 16,
-            right: 16,
-          ),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            border: Border.all(width: 5, color: Colors.white),
-            color: Colors.white,
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 20,
-                offset: Offset(5, 5),
-              ),
-            ],
-          ),
-          child: Icon(
-            Icons.app_registration_sharp,
-            color: Colors.grey.shade300,
-            size: 80.0,
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(80, 80, 0, 0),
-          child: Icon(
-            Icons.add_circle,
-            color: Colors.grey.shade700,
-            size: 25.0,
-          ),
-        ),
-      ],
+    return Container(
+      height: 235,
+      width: 235,
+      padding: const EdgeInsets.only(top: 75.0, bottom: 30),
+      child: const Image(
+        image: AssetImage('assets/images/user_register.png'),
+      ),
     );
   }
 

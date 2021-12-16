@@ -7,4 +7,3 @@ class Event {
   @override
   String toString() => title;
 }
-

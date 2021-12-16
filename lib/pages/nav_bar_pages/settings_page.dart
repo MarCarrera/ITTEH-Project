@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:home/controllers/auth_controller.dart';
-//import 'package:home/controllers/login_controller.dart';
 import '../../constans.dart';
 import 'package:get/get.dart';
 

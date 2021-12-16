@@ -1,21 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
-import 'package:home/Pages/nav_bar_pages/edit_priofile.dart';
-//import 'package:home/Pages/nav_bar_pages/data_user.dart';
 import 'package:home/pages/body.dart';
-import 'package:home/pages/careers_screen.dart';
-import 'package:home/pages/form_class_page.dart';
 import 'package:home/pages/gallery.dart';
 import 'package:home/pages/home_page.dart';
 import 'package:home/pages/login_page.dart';
-import 'package:home/pages/nav_bar_pages/calendar_page.dart';
-import 'package:home/pages/nav_bar_pages/chat_page.dart';
-import 'package:home/pages/nav_bar_pages/profile_page.dart';
-import 'package:home/pages/nav_bar_pages/settings_page.dart';
-import 'package:home/pages/personal_screen.dart';
-import 'package:home/pages/registration_page.dart';
+import 'package:home/Pages/notifications.dart';
+import 'package:home/pages/careers_screen.dart';
 import 'package:home/pages/screen_notices.dart';
+import 'package:home/Pages/form_class_page.dart';
+import 'package:home/pages/registration_page.dart';
+import 'package:home/Pages/profile/profile_page.dart';
+import 'package:home/Pages/profile/edit_priofile.dart';
+import 'package:home/Pages/personal/info_personal.dart';
+import 'package:home/pages/nav_bar_pages/chat_page.dart';
+import 'package:home/Pages/personal/personal_screen.dart';
+import 'package:home/pages/nav_bar_pages/calendar_page.dart';
+import 'package:home/pages/nav_bar_pages/settings_page.dart';
 
 routes() => [
       GetPage(
@@ -53,7 +54,12 @@ routes() => [
           name: "/gallery", page: () => Gallery(), transition: Transition.zoom),
       GetPage(
           name: "/form",
-          page: () => FormClassPage(),
+          page: () => FormClassPage(
+                time: '',
+                teacher: '',
+                nameClass: '',
+                classroom: '',
+              ),
           transition: Transition.zoom),
       GetPage(
           name: "/registration",
@@ -62,5 +68,13 @@ routes() => [
       GetPage(
           name: "/editProfile",
           page: () => EditProfile(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/notifications",
+          page: () => Notifications(),
+          transition: Transition.zoom),
+      GetPage(
+          name: "/infoPersonal",
+          page: () => InfoPersonal(),
           transition: Transition.zoom),
     ];

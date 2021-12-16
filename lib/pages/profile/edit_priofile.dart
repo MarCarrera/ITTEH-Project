@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import 'package:home/controllers/auth_controller.dart';
 import 'package:home/controllers/my_user_controller.dart';
 import 'package:image_picker/image_picker.dart';
 

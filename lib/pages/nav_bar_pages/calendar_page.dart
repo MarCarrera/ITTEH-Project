@@ -39,91 +39,85 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-           margin: const EdgeInsets.only(top:46),
-            color: Colors.transparent,
-              child: const Text('Calendario Escolar',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 46),
+              color: Colors.transparent,
+              child: const Text(
+                'Calendario Escolar',
                 style: TextStyle(
-                color: kDefaultColorBlue,
-                fontSize: 20,
-          
-           ),
-          ),
-          ),
-          TableCalendar(
-            focusedDay: selectedDay,
-            firstDay: DateTime(1990),
-            lastDay: DateTime(2050),
-            calendarFormat: format,
-            onFormatChanged: (CalendarFormat _format) {
-              setState(() {
-                format = _format;
-              });
-            },
-            startingDayOfWeek: StartingDayOfWeek.sunday,
-            daysOfWeekVisible: true,
-
-            //Day Changed
-            onDaySelected: (DateTime selectDay, DateTime focusDay) {
-              setState(() {
-                selectedDay = selectDay;
-                focusedDay = focusDay;
-              });
-              print(focusedDay);
-            },
-            selectedDayPredicate: (DateTime date) {
-              return isSameDay(selectedDay, date);
-            },
-
-            eventLoader: _getEventsfromDay,
-
-            //To style the Calendar
-            calendarStyle: const CalendarStyle(
-              isTodayHighlighted: true,
-              selectedDecoration: BoxDecoration(
-                color: kDefaultColorGrey,
-                //shape: BoxShape.rectangle,
-                shape: BoxShape.circle,
-                //borderRadius: BorderRadius.circular(5.0),
-              ),
-              selectedTextStyle: TextStyle(color: Colors.white),
-              todayDecoration: BoxDecoration(
-                color: kDefaultColorBlue,
-                shape: BoxShape.circle,
-                //borderRadius: BorderRadius.circular(5.0),
-              ),
-              defaultDecoration: BoxDecoration(
-                shape: BoxShape.circle,
-                //borderRadius: BorderRadius.circular(5.0),
-              ),
-              weekendDecoration: BoxDecoration(
-                shape: BoxShape.circle,
-                //borderRadius: BorderRadius.circular(5.0),
+                  color: kDefaultColorBlue,
+                  fontSize: 20,
+                ),
               ),
             ),
-            headerStyle: HeaderStyle(
-              formatButtonVisible: true,
-              titleCentered: true,
-              formatButtonShowsNext: false,
-              formatButtonDecoration: BoxDecoration(
-                color: kDefaultColorBlue,
-                borderRadius: BorderRadius.circular(5.0),
+            TableCalendar(
+              focusedDay: selectedDay,
+              firstDay: DateTime(1990),
+              lastDay: DateTime(2050),
+              calendarFormat: format,
+              onFormatChanged: (CalendarFormat _format) {
+                setState(() {
+                  format = _format;
+                });
+              },
+              startingDayOfWeek: StartingDayOfWeek.sunday,
+              daysOfWeekVisible: true,
+
+              //Day Changed
+              onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                setState(() {
+                  selectedDay = selectDay;
+                  focusedDay = focusDay;
+                });
+                print(focusedDay);
+              },
+              selectedDayPredicate: (DateTime date) {
+                return isSameDay(selectedDay, date);
+              },
+
+              eventLoader: _getEventsfromDay,
+
+//---------------------------------COMIENZA ESTILO DE CALENDARIO-----------------------------------//
+              calendarStyle: const CalendarStyle(
+                isTodayHighlighted: true,
+                selectedDecoration: BoxDecoration(
+                  color: kDefaultColorGrey,
+                  shape: BoxShape.circle,
+                ),
+                selectedTextStyle: TextStyle(color: Colors.white),
+                todayDecoration: BoxDecoration(
+                  color: kDefaultColorBlue,
+                  shape: BoxShape.circle,
+                ),
+                defaultDecoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                weekendDecoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
               ),
-              formatButtonTextStyle: const TextStyle(
-                color: Colors.white,
+              headerStyle: HeaderStyle(
+                formatButtonVisible: true,
+                titleCentered: true,
+                formatButtonShowsNext: false,
+                formatButtonDecoration: BoxDecoration(
+                  color: kDefaultColorBlue,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                formatButtonTextStyle: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          ..._getEventsfromDay(selectedDay).map(
-            (Event event) => ListTile(
-              title: Text(
-                event.title,
-              ),
+//-------------------------------------------Comienza llamado de la tarjeta de evento-----------------------//
+            ..._getEventsfromDay(selectedDay).map(
+              (Event event) => _NewEvent(event),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showDialog(
@@ -149,7 +143,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       );
                     } else {
                       selectedEvents[selectedDay] = [
-                        Event(title: _eventController.text)
+                        Event(title: _eventController.text),
                       ];
                     }
                   }
@@ -162,11 +156,69 @@ class _CalendarPageState extends State<CalendarPage> {
             ],
           ),
         ),
-        label:const Text("Evento"),
+        label: const Text("Evento"),
         icon: const Icon(Icons.add),
         backgroundColor: kDefaultColorBlue,
       ),
     );
   }
-}
 
+//----------------------------------------VENTANA EMERGENTE DE EVENTO----------------------------------------//
+  // ignore: non_constant_identifier_names
+  _NewEvent(Event event) {
+    return Container(
+      color: Colors.transparent,
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Container(
+        // este contenedor se usa de FONDO para colocar los demas widgets
+        height: 80.0,
+        margin: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: kDefaultColorVino),
+        // aqui se ocupa Stack para lograr el diseno de las TARJETAS DE INFORMACION
+        child: Stack(
+          children: [
+            //todo ------------ Informacion ---------------------//
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: const EdgeInsets.only(left: 25.0, top: 20.0),
+                child: Text(
+                  event.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+            // todo ------------- boton ------------------//
+            // se uso Align para colocar el BOTON centrado en la parte baja
+            Align(
+              //alignment: Alignment.bottomCenter,
+              // el container se uso para poder agregar altura y anchura
+              child: Container(
+                  //padding: const EdgeInsets.only(top: 10),
+                  height: 20.0,
+                  width: 274.0,
+                  // la separacion de la parte baja es de 18
+                  margin: const EdgeInsets.only(top: 40, bottom: 18.0),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("14th November",
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.white)),
+                        SizedBox(width: kDefaultPaddin),
+                        Text("Saturday",
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.white)),
+                      ])),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

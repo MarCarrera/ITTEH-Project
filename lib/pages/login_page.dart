@@ -54,11 +54,11 @@ class LoginPage extends StatelessWidget {
 
   _iconLogin() {
     return Container(
-      padding: const EdgeInsets.only(top: 90.0),
+      height: 230,
+      width: 230,
+      padding: const EdgeInsets.only(top: 75.0),
       child: const Image(
-        image: AssetImage('assets/images/logo_2.png'),
-        height: 120,
-        width: 120,
+        image: AssetImage('assets/images/user_login.png'),
       ),
     );
   }

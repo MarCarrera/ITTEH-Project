@@ -7,24 +7,32 @@ import '../constans.dart';
 import 'home_page.dart';
 
 class FormClassPage extends StatefulWidget {
-  const FormClassPage({Key? key}) : super(key: key);
+  final String nameClass;
+  final String teacher;
+  final String time;
+  final String classroom;
 
-  //static final namePage = "Formulario";
+  const FormClassPage({
+    Key? key,
+    required this.nameClass,
+    required this.teacher,
+    required this.time,
+    required this.classroom,
+  }) : super(key: key);
 
   @override
   _FormClassPageState createState() => _FormClassPageState();
 }
 
 class _FormClassPageState extends State<FormClassPage> {
-  //llave para identificar el formulario y asociar sus elemntos y pasarlos al listado
-  //final idClass = GlobalKey<FormState>();
-  //mapa que pasara a clases con atributos especificos de los elementos del formulario
-  //Map<String,dynamic> newClass = {};
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameClassController = TextEditingController();
+  final TextEditingController _teacherController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
+  final TextEditingController _classroomController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //final controller = FormController();
-
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -53,91 +61,88 @@ class _FormClassPageState extends State<FormClassPage> {
           child: Container(
             margin: const EdgeInsets.all(20),
             child: Form(
-                //key: idClass,
+                key: _formKey,
                 child: Column(children: <Widget>[
-              _crearNombreClase(),
-              const SizedBox(height: 20),
-              _crearNombreDoc(),
-              const SizedBox(height: 20),
-              _crearHora(),
-              const SizedBox(
-                height: 20,
-              ),
-              _crearAula(),
-              const SizedBox(height: 30),
-              _botonAgregar()
-//-----------------------------------------BOTON AGREGAR---------------------------------//
-            ])),
+//-------------------------------ENTRADA NOMBRE CLASE--------------------------//
+                  TextFormField(
+                      controller: _nameClassController,
+                      decoration: ThemeHelper().textInputDecoration(
+                          'Nombre de la clase', 'Ingresa nombre de la clase'),
+                      validator: (text) {
+                        if (text!.isNotEmpty) {
+                          return null;
+                        }
+                        return "Dato vacío.";
+                      }),
+
+//-------------------------------ENTRADA NOMBRE DOCENTE--------------------------//
+                  const SizedBox(height: 20),
+                  TextFormField(
+                      controller: _teacherController,
+                      decoration: ThemeHelper().textInputDecoration(
+                          'Docente', 'Quien imparte la clase'),
+                      validator: (text) {
+                        if (text!.isNotEmpty) {
+                          return null;
+                        }
+                        return "Dato vacío.";
+                      }),
+
+//-------------------------------ENTRADA HORA CLASE------------------------------//
+                  const SizedBox(height: 20),
+                  TextFormField(
+                      controller: _timeController,
+                      decoration: ThemeHelper()
+                          .textInputDecoration('Hora de clase', '00:00'),
+                      validator: (text) {
+                        if (text!.isNotEmpty) {
+                          return null;
+                        }
+                        return "Dato vacío.";
+                      }),
+//-------------------------------ENTRADA NOMBRE AULA-----------------------------//
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                      controller: _classroomController,
+                      decoration:
+                          ThemeHelper().textInputDecoration('Aula', 'Aula'),
+                      validator: (text) {
+                        if (text!.isNotEmpty) {
+                          return null;
+                        }
+                        return "Dato vacío.";
+                      }),
+//------------------------------------BOTON AGREGAR------------------------------//
+                  const SizedBox(height: 30),
+                  Container(
+                    height: 40,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: kDefaultColorBlue,
+                    ),
+                    child: ElevatedButton(
+                        style: ThemeHelper().buttonStyle(),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          child: Text(
+                            'Agregar'.toUpperCase(),
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white),
+                          ),
+                        ),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            Get.toNamed('/home');
+                          }
+                        }),
+                  ),
+                ])),
           ),
         ));
-  }
-
-  _crearNombreClase() {
-    //evento que recibe un valor y se dispara cuando ocurre el evento (A)
-    return TextFormField(
-        //controller: controller.materiaController,
-        decoration: ThemeHelper().textInputDecoration(
-            'Nombre de la clase', 'Ingresa nombre de la clase'));
-  }
-
-  _crearNombreDoc() {
-    return TextFormField(
-        onSaved: (valor) {
-          //cuando salve, en la nueva clase en la casilla clase guardara lo que se digito
-          //newClass['docente']=valor;
-        },
-        decoration: ThemeHelper()
-            .textInputDecoration('Docente', 'Quien imparte la clase'));
-  }
-
-  _crearHora() {
-    return TextFormField(
-        onSaved: (valor) {
-          //cuando salve, en la nueva clase en la casilla clase guardara lo que se digito
-          //newClass['hora']=valor;
-        },
-        decoration:
-            ThemeHelper().textInputDecoration('Hora de clase', '00:00'));
-  }
-
-  _crearAula() {
-    return TextFormField(
-        onSaved: (valor) {
-          //cuando salve, en la nueva clase en la casilla clase guardara lo que se digito
-          //newClass['aula']=valor;
-        },
-        decoration: ThemeHelper().textInputDecoration('Aula', 'Aula'));
-  }
-
-  _botonAgregar() {
-    return Container(
-      height: 40,
-      width: 140,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: kDefaultColorBlue,
-      ),
-      child: ElevatedButton(
-          style: ThemeHelper().buttonStyle(),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Text(
-              'Agregar'.toUpperCase(),
-              style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.white),
-            ),
-          ),
-          onPressed: () {
-            /*Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ItemCardClass(
-                          materia: c.text,
-                        )));*/
-            Get.toNamed('/home');
-          }),
-    );
   }
 }

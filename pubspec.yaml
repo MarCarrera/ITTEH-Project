@@ -59,6 +59,8 @@ flutter:
     - assets/images/loading.gif
     - assets/images/logo_2.png
     - assets/images/icon_setting.png
+    - assets/images/user_login.png
+    - assets/images/user_register.png
  
 
   
