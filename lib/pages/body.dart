@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final userController = Get.put(MyUserController());
+    final userController = Get.put(MyUserController());
 
     return const Scaffold(
       body: BodySection(),
