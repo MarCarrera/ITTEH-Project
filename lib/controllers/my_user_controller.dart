@@ -18,8 +18,6 @@ class MyUserController extends GetxController {
   final careerController = TextEditingController();
   final ageController = TextEditingController();
   final aboutMeController = TextEditingController();
-  //final emailController = TextEditingController();
-  //final passwordController = TextEditingController();
 
   Rx<File?> pickedImage = Rx(null);
   Rx<bool> isLoading = Rx(false);
@@ -46,8 +44,6 @@ class MyUserController extends GetxController {
     careerController.text = user.value?.career ?? '';
     ageController.text = user.value?.age.toString() ?? '';
     aboutMeController.text = user.value?.aboutMe ?? '';
-    //emailController.text = user.value?.email ?? '';
-    //passwordController.text = user.value?.password ?? '';
     isLoading.value = false;
   }
 
@@ -61,8 +57,6 @@ class MyUserController extends GetxController {
     final semester = int.tryParse(semesterController.text) ?? 0;
     final age = int.tryParse(ageController.text) ?? 0;
     final aboutMe = aboutMeController.text;
-    //final email = emailController.text;
-    //final password = passwordController.text;
 
     final newUser = MyUser(uid, name, lastName, nControl, career, semester, age,
         aboutMe, //email, password,

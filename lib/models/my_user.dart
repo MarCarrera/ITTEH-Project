@@ -9,11 +9,9 @@ class MyUser extends Equatable {
   final int age;
   final String career;
   final String aboutMe;
-  //final String email;
-  //final String password;
   final String? image;
 
-  //-----------CONSTRUCTOR DE LA CLASE-----------------------------------------//
+  //--------------------------------CONSTRUCTOR DE LA CLASE------------------------------//
   const MyUser(this.id, this.name, this.lastName, this.nControl, this.career,
       this.semester, this.age, this.aboutMe, //this.email, this.password,
       {this.image});
@@ -30,13 +28,11 @@ class MyUser extends Equatable {
       'semester': semester,
       'age': age,
       'aboutMe': aboutMe,
-      //'password': password,
-      //guardar la imagen nueva o la ya existente
       'image': newImage ?? image,
     };
   }
 
-  //Funcion que guarda a Objeto (Student) cuando recibe un mapa de la Database
+  //Funcion que guarda a Objeto (user) cuando recibe un mapa de la Database
   //si 'data' recibe tal cadena, la convierte a tal tipo de dato y lo almacena
   //en tal variable.
   MyUser.fromFirebaseMap(Map<String, Object?> data)
@@ -48,23 +44,10 @@ class MyUser extends Equatable {
         age = data['age'] as int,
         career = data['career'] as String,
         aboutMe = data['aboutMe'] as String,
-        //email = data['email'] as String,
-        //password = data['password'] as String,
         image = data['image'] as String?;
 
   @override
   //Equatable: comparar los objetos que esten actualizados y los que no
-  List<Object?> get props => [
-        id,
-        name,
-        lastName,
-        nControl,
-        semester,
-        age,
-        career,
-        aboutMe,
-        //email,
-        //password,
-        image
-      ];
+  List<Object?> get props =>
+      [id, name, lastName, nControl, semester, age, career, aboutMe, image];
 }

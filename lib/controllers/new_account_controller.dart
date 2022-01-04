@@ -16,15 +16,6 @@ class NewAccountController extends GetxController {
   final error = Rx<String?>(null); //si existe error
   final isLoading = RxBool(false); // si esta cargando
 
-  String? emailValidator(String? value) {
-    return (value == null || value.isEmpty) ? 'Se requiere un email' : null;
-  }
-
-  String? passwordValidator(String? value) {
-    if (value == null || value.isEmpty) return 'Se requiere una contraseña';
-    return null;
-  }
-
   //funcion para crear el usuario
   Future<void> createUserWithEmailAndPassword() async {
     try {

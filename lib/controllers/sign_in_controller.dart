@@ -13,15 +13,6 @@ class SignInController extends GetxController {
   final error = Rx<String?>(null); //si existe error
   final isLoading = RxBool(false); // si esta cargando
 
-  String? emailValidator(String? value) {
-    return (value == null || value.isEmpty) ? 'Email inválido' : null;
-  }
-
-  String? passwordValidator(String? value) {
-    if (value == null || value.isEmpty) return 'Contraseña inválida';
-    return null;
-  }
-
   //funcion para iniciar sesion
   Future<void> signInWithEmailAndPassword() async {
     try {

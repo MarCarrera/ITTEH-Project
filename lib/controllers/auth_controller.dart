@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:get/get.dart';
 import 'package:home/repository/auth_repository.dart';
 

@@ -18,9 +18,11 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userController = Get.put(MyUserController());
+    //final userController = Get.put(MyUserController());
 
-    return Scaffold(body: Obx(() {
+    return const Scaffold(
+      body: BodySection(),
+      /*Obx(() {
       if (userController.isLoading.value) {
         return const Center(
             child: CircularProgressIndicator(
@@ -29,7 +31,8 @@ class Body extends StatelessWidget {
         ));
       }
       return const BodySection();
-    }));
+    })*/
+    );
   }
 }
 
