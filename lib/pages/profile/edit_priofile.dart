@@ -17,9 +17,9 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final userController = Get.put(MyUserController());
 
-    return const Scaffold(
-      body: MyUserSection(),
-      /*Obx(() {
+    return Scaffold(
+        // body: MyUserSection(),
+        body: Obx(() {
       if (userController.isLoading.value) {
         return const Center(
             child: CircularProgressIndicator(
@@ -28,8 +28,7 @@ class EditProfile extends StatelessWidget {
         ));
       }
       return const MyUserSection();
-    })*/
-    );
+    }));
   }
 }
 
